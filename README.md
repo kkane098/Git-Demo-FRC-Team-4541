@@ -2,6 +2,8 @@
 Git demo for FRC Team 4541
 
 # Presentation Summary
+## A Quick Note
+This presentation covers how to utilize many basic git commands **from the command line.** I highly recommend using the command line for most git functions.  While many editors have git plugins that are fine for very basic operations, ultimately using the command line gives you the most control and is the most foolproof method to ensure your local repo is always in the state you want.  However, I think VS Code's git integration is actually pretty good and is fine for staging and commiting changes. Additionally, I recommend installing the git lens plugin, as it has several very helpful features that make it much easier to see what's going on in your repo.
 ## Common Git Commands
 * git clone URL/.git file
   * Creates a local copy of a remote repository
@@ -20,6 +22,7 @@ Git demo for FRC Team 4541
   * Undoes your most recent commit without reversing the changes
 * git reset --hard HEAD^
   * Undoes your most recent commit and reverses the changes
+  
 * git diff branch1 branch2
   * Lists all of the differences between branch1 and branch2
 ## Git Commands for Branching
@@ -33,18 +36,21 @@ Git demo for FRC Team 4541
   * Tells git to update the version of branch stored on your remote repo (ie. Github) with the changes from your current branch
 * git pull origin branch
   * Tells git to update your current branch with changes from the version of branch stored on your remote repo
-## Example Workflow for Pushing
-* git checkout branch-to-push (if necessary)
-* git add . (if necessary)
-* git commit –am “message”
+## Example Workflow for Pushing (after all your new changes are committed to your branch)
 * git checkout master
 * git pull origin master
 * git checkout branch-to-push
 * git rebase master
 * git push origin branch-to-push
+## Feature Branches
+<img src="https://wac-cdn.atlassian.com/dam/jcr:01b0b04e-64f3-4659-af21-c4d86bc7cb0b/01.svg?cdnVersion=ks" alt="feature branch" width="500"/>
+<img src="https://wac-cdn.atlassian.com/dam/jcr:5b153a22-38be-40d0-aec8-5f2fffc771e5/03.svg?cdnVersion=ks" alt="rebase" width="500"/>
+Images from Atlassian Git tutorial: https://www.atlassian.com/git/tutorials/merging-vs-rebasing
+  
+I recommend using feature branches to ensure the master branch of your repo is always in a clean, stable state.  Whenever you want to add a new feature (ie. teleop drive code, elevator control, etc.) to your code, you would create a new branch titled something like "feature_name" and make your changes in that branch. As soon as you have implemented that feature in its entirety, you would follow the workflow detailed above to push your branch to Github, then create a pull request so your new code can be reviewed by other team members and merged into the master branch.
 ## Merge Conflicts
 * Should be fairly rare, git can usually automatically merge changes without that much of a problem
-* If a merge conflict comes up, you might see a strange command line editor (vi if you’re curious) come up.  Type esc :q to exit this window (vi commands are weird and a whole other rabbit hole to go down)
+* If a merge conflict comes up, you might see a strange command line editor (vi if you’re curious) come up.  Type esc :q to exit this window
 * Type git status for a list of conflicting files
 * Open each file in an editor and manually choose which version you want to keep, or combine the two (VSCode is great for this) 
 ## .gitignore
